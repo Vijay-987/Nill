@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Love 💖</title>
+
+<style>
+    
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow-x:hidden;
+  background-color: #ff758c,#ff7eb3;
+}
+
+.container{
+  width:90%;
+  max-width:900px;
+  background:white;
+  border-radius:25px;
+  padding:30px;
+  text-align:center;
+  box-shadow:0 20px 50px rgba(0,0,0,0.3);
+}
+
+.section{
+  margin-bottom:40px;
+}
+
+.section h2{
+  color:#ff4e8d;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.gallery img{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+  border-radius:15px;
+  transition:0.4s;
+}
+
+.gallery img:hover{
+  transform:scale(1.1);
+}
+
+button{
+  padding:15px 35px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff4e8d;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+/* Video Popup */
+#popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+#popup video{
+  width:320px;
+  border-radius:20px;
+  box-shadow:0 0 30px white;
+  animation:zoomIn 1s ease;
+}
+
+@keyframes zoomIn{
+  from{transform:scale(0);}
+  to{transform:scale(1);}
+}
+
+.closeBtn{
+  margin-top:20px;
+  background:white;
+  color:#ff4e8d;
+  border:none;
+  padding:10px 20px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+/* Premium Floating Hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  pointer-events:none;
+  animation:floatUp linear forwards;
+  filter:drop-shadow(0 0 8px pink);
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(0) scale(0.5) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-110vh) scale(1.5) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- 1️⃣ Best Wishes -->
+  <div class="section">
+    <h2>Best Wishes From My Side 💖</h2>
+    <p>Happy Birthday My Love ❤️  
+     </p>
+     <h4> You are the most precious gift in my life.
+    On this special day i just want to tell you how much you mean to me.
+    you are my happiness,my strenth, my peace and my forever.
+    Every moment with you fell like magical.
+    I promise to beside you.support you and love always...</h4>
+  </div>
+
+  <!-- 2️⃣ Our Memory Photos -->
+  <div class="section">
+    <h2>Our Beautiful Memories 📸</h2>
+    <div class="gallery">
+      <img src="photo1.jpg" alt="">
+      <img src="photo2.jpg" alt="">
+      <img src="photo3.jpg" alt="">
+      <img src="photo4.jpg" alt="">
+      <img src="photo5.jpg" alt="">
+      <img src="photo6.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- 3️⃣ Last Wishes -->
+  <div class="section">
+    <h2>Last Wish With Love 💞</h2>
+    <p>I wish to hold your hands and celebrate every birthday forever 💍</p>
+  </div>
+
+  <!-- Surprise Button -->
+  <button onclick="showSurprise()">Click For Surprise 🎁</button>
+
+</div>
+
+<!-- Video Popup -->
+<div id="popup">
+  <video id="loveVideo" muted autoplay loop controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  <button class="closeBtn" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+function showSurprise(){
+  document.getElementById("popup").style.display="flex";
+  document.getElementById("loveVideo").play();
+  generateHearts();
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+function generateHearts(){
+  setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*25+15)+"px";
+    heart.style.animationDuration=(Math.random()*3+4)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),7000);
+  },200);
+}
+</script>
+
+</body>
+</html>
